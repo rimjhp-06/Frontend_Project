@@ -1,0 +1,49 @@
+
+button{
+    
+    border-radius: 0.5em;
+}
+.left p{
+    color:black;
+}
+.body{
+    margin-top: 3em;
+}
+.left{
+    display: block;
+    float:left;
+    width:45%;
+    text-align: justify;
+    margin-left:2em;
+    
+}
+.right{
+    display: block;
+    float:right;
+    width:50%;
+    padding-top:2em;
+}
+.import{
+    background-color: white;
+    text-align: center;
+    color:black;
+    width:10em;
+   margin-right:1em;
+    display: inline-block;
+    
+}
+.export{
+    background-color: black;
+    text-align: center;
+    color:whitesmoke;
+    width:10em;
+    display: inline-block;
+    
+}
+.data{
+    display:block;
+    float:left;
+    width:auto;
+    margin:2em;
+    border:1px solid plum;
+}
