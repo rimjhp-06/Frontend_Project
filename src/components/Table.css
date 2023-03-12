@@ -1,14 +1,33 @@
+table {
+    border-collapse: collapse;
+  }
+
 td{
     border:0.5px ;
     padding:1em;
     border-color: black;
+    border-collapse: collapse;
 }
-tbody tr{
+tbody{
     border:0.5px solid black;
+    border-collapse: collapse;
 }
-tr{
-    border:0.5px solid black;
-}
+
 th{
-    border:0.5px solid black;
+    background-color: rgb(206, 170, 206);
+    margin:-1em;
+    padding:0.5em;
+    border-collapse: collapse;
 }
+
+tr{
+  border: solid;
+  border-width: 1px 0;
+}
+
+tr:first-child {
+    border-top: none;
+  }
+  tr:last-child {
+    border-bottom: none;
+  }

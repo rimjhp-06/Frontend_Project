@@ -9,13 +9,9 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const hardcodedEmail = 'test@example.com';
+  const hardcodedPassword = 'password';
 
-
-  useEffect(() => {
-    if (localStorage.getItem('authToken')) {
-      navigate('/dashboard');
-    }
-  }, []);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -23,6 +19,11 @@ function Login() {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const generateAuthToken = () => {
+    const authToken = Math.random().toString(36).substr(2);
+    return authToken;
   };
 
   const handleLoginFormSubmit = async (event) => {
@@ -33,11 +34,20 @@ function Login() {
         password,
       });
       localStorage.setItem('authToken', response.data.token);
-      navigate.push('/dashboard');
+      navigate('/dashboard');
     } catch (error) {
       console.error(error);
     }
+    
+  
+    if (email === hardcodedEmail && password === hardcodedPassword) {
+      const authToken = generateAuthToken();
+      localStorage.setItem('authToken', authToken);
+      navigate('/dashboard');
+    }
   };
+
+ 
 
   return (
     <div>

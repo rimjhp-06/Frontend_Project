@@ -4,7 +4,7 @@ import "./Dashboard.css";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CsvTable from './CsvTable';
-
+import Papa from 'papaparse';
 
 
 
@@ -46,9 +46,18 @@ function Dashboard() {
    if(file)
     reader.readAsText(file);
   };
+
+const handleStoredImport =()=>{
+    const storedData = localStorage.getItem('Student');
+  if (storedData) {
+    const parsedData = Papa.parse(storedData, { header: true }).data;
+    setStudentData(parsedData);
+  }
+  }
+
   // Export JSON data saved in local storage
   const handleExport = () => {
-    const jsonData = JSON.parse(localStorage.getItem('StudentData'));
+    const jsonData = JSON.parse(localStorage.getItem('./Student.csv'));
     const filename = 'student_data.json';
     const blob = new Blob([JSON.stringify(jsonData)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -69,7 +78,6 @@ function Dashboard() {
       </div>
       <div class="right">
         <input type="file" accept=".csv" class="import" onChange={handleImport} />
-        {/* <button class="import" onClick={handleImport}>Import Students</button> */}
        
         <button class="export" onClick={handleExport}>Export as CSV</button>
         {studentData.map((student, index) => (

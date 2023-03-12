@@ -18,15 +18,17 @@ function CsvTable(props) {
   }, [props.csvData]);
 
   return (
-    <Table striped bordered hover>
+   
+    <Table striped bordered hover >
       <thead>
-        
+      {data.length>0 && 
         <tr>
            
-          {Object===null && Object.keys(data[0]).map((key) => (
+          {Object.keys(data[0]).map((key) => (
             <th key={key}>{key}</th>
           ))}
        </tr>
+}
       </thead>
 
       
@@ -36,11 +38,13 @@ function CsvTable(props) {
             
             {Object.values(row).map((value, index) => (
               <td key={index}>{value}</td>
+              
             ))}
           </tr>
         ))}
       </tbody>
     </Table>
+            
   );
 }
 
